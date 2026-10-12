@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday! 🎂</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #ffe0ec, #f5d9ff, #fff0d9);
+    font-family: Georgia, serif;
+    perspective: 1200px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    color: #ff6b9d;
+    font-size: 24px;
+    animation: floatUp 8s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.8; }
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.scene {
+    width: min(90vw, 390px);
+    height: 520px;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    filter: drop-shadow(0 15px 22px #9d5b8040);
+}
+
+.inside {
+    position: absolute;
+    inset: 0;
+    padding: 35px 27px;
+    border-radius: 15px;
+    background: #fffafc;
+    border: 2px solid #f7b5d0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.inside h2 {
+    color: #d63384;
+    font-size: 28px;
+    margin: 0 0 16px;
+}
+
+.inside p {
+    color: #70435b;
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 7px 0;
+}
+
+.signature {
+    color: #d63384 !important;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 18px !important;
+}
+
+.cover {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    transition: transform 1.3s ease-in-out;
+    cursor: pointer;
+}
+
+.cover-front,
+.cover-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 15px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.cover-front {
+    border: 3px solid #fff0f6;
+    background: linear-gradient(145deg, #ff8fbd, #e84393 65%, #c52c78);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.cover-front::before {
+    content: "";
+    position: absolute;
+    inset: 13px;
+    border: 1px solid #ffffffa8;
+    border-radius: 10px;
+    pointer-events: none;
+}
+
+.cover-back {
+    background: #f9c6dc;
+    transform: rotateY(180deg);
+    border: 2px solid white;
+}
+
+.balloons {
+    font-size: 47px;
+    margin-bottom: 15px;
+}
+
+.cover-front h1 {
+    font-size: clamp(34px, 9vw, 43px);
+    line-height: 1.15;
+    margin: 10px 0;
+    text-shadow: 2px 3px 5px #9a155c55;
+}
+
+.cover-front .subtitle {
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 12px;
+}
+
+.open-hint {
+    position: absolute;
+    bottom: 28px;
+    font: 13px Arial, sans-serif;
+    letter-spacing: 2px;
+    color: #fff9fc;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    50% { opacity: 0.55; }
+}
+
+.card.open .cover {
+    transform: rotateY(-180deg);
+}
+
+button {
+    border: none;
+    border-radius: 25px;
+    padding: 12px 23px;
+    margin-top: 17px;
+    background: #e84393;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px #e8439340;
+}
+
+button:hover {
+    background: #c52c78;
+}
+
+button:focus-visible,
+.cover:focus-visible {
+    outline: 3px solid #7c2454;
+    outline-offset: 5px;
+}
+
+@media (max-height: 600px) {
+    body { padding: 20px 0; }
+    .scene { height: min(520px, 85vh); }
+    .inside { padding: 20px; }
+    .inside p { font-size: 13px; }
+}
+</style>
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<div class="scene">
+    <div class="card" id="birthdayCard">
+
+        <!-- Birthday message inside -->
+        <div class="inside">
+            
+            <h2> Happy Birthday!</h2>
+
+            <p>Dear Friend,</p>
+
+            <p>
+                Today is all about celebrating the wonderful person
+                you are. I hope your birthday brings you endless
+                smiles, beautiful memories, and all the love you deserve.
+            </p>
+
+            <p>
+                May your future be filled with exciting opportunities,
+                amazing adventures, success in everything you do,
+                and the courage to chase every dream in your heart.
+            </p>
+
+            <p>
+                May you always find reasons to smile, strength during
+                difficult days, and people who appreciate your beautiful soul.
+                Never stop believing in yourself!✨
+            </p>
+
+            <p>
+                Keep shining, keep growing, and keep being the
+                incredible person you are. The best chapters of your
+                life are still waiting to be written! 
+            </p>
+
+            <p class="signature">
+                Lots of love and the warmest wishes, <br>
+                Your Friend
+            </p>
+
+            <button onclick="closeCard(event)">Close Card 💌</button>
+        </div>
+
+        <!-- Clickable front cover -->
+        <div
+            class="cover"
+            id="cover"
+            role="button"
+            tabindex="0"
+            aria-label="Open your birthday card"
+            aria-expanded="false"
+            onclick="openCard()"
+            onkeydown="handleKey(event)"
+        >
+            <div class="cover-front">
+                <div class="balloons">🎂</div>
+                <h1>Happy<br>Birthday!</h1>
+                <div class="subtitle">CHETHANA....</div>
+                <div style="font-size: 30px; margin-top: 22px;">
+                
+                </div>
+                <div class="open-hint">♡ CLICK TO OPEN ♡</div>
+            </div>
+
+            <div class="cover-back"></div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+const card = document.getElementById("birthdayCard");
+const cover = document.getElementById("cover");
+
+function openCard() {
+    card.classList.add("open");
+    cover.setAttribute("aria-expanded", "true");
+}
+
+function closeCard(event) {
+    event.stopPropagation();
+    card.classList.remove("open");
+    cover.setAttribute("aria-expanded", "false");
+}
+
+function handleKey(event) {
+    if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openCard();
+    }
+}
+
+// Create floating hearts
+const heartContainer = document.getElementById("hearts");
+
+
+for (let i = 0; i < 18; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.textContent = symbols[i % symbols.length];
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDelay = Math.random() * 8 + "s";
+    heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+    heart.style.fontSize = (16 + Math.random() * 20) + "px";
+    heartContainer.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
